@@ -1,0 +1,26 @@
+
+
+<form #f="ngForm" (ngSubmit)="add(f)" >
+    <label>firstname:</label>
+    <input type="text" name="firstname" #firstname="ngModel" ngModel required minlength="5">
+    <div class="alert alert-danger" role="alert" *ngIf="(firstname.errors?.['required'] && firstname.touched )|| firstname.errors?.['minlength']">
+      This  FirstName is required And length more then 5 !!
+    </div>
+    <br>
+    
+    <label>lastname:</label>
+    
+    <input type="text" name="lastname" #lastname="ngModel" ngModel required minlength="3">
+    <div class="alert alert-danger" role="alert" *ngIf="(lastname.errors?.['required'] && lastname.touched) || lastname.errors?.['minlength']">
+      This  LastName is required and more than 3  !!
+    </div>
+    <br>
+    <label>age:</label>
+    <input type="number" name="age" ngModel #age="ngModel" required>
+    <div class="alert alert-danger" role="alert" *ngIf="age.errors?.['required'] && age.touched">
+        This  age is required !!
+      </div>
+    <br>
+    <button type="submit" [disabled]="f.invalid">Add</button>
+
+</form>
