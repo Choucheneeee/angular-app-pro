@@ -9,7 +9,6 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
   selector: 'app-root',
   standalone: true,
   imports: [
-    FormsModule,
     RouterOutlet,
     RouterModule,
     NavbarComponent,

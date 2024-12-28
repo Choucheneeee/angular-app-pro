@@ -1,26 +1,43 @@
 
 
-<form #f="ngForm" (ngSubmit)="add(f)" >
-    <label>firstname:</label>
-    <input type="text" name="firstname" #firstname="ngModel" ngModel required minlength="5">
-    <div class="alert alert-danger" role="alert" *ngIf="(firstname.errors?.['required'] && firstname.touched )|| firstname.errors?.['minlength']">
-      This  FirstName is required And length more then 5 !!
-    </div>
-    <br>
-    
-    <label>lastname:</label>
-    
-    <input type="text" name="lastname" #lastname="ngModel" ngModel required minlength="3">
-    <div class="alert alert-danger" role="alert" *ngIf="(lastname.errors?.['required'] && lastname.touched) || lastname.errors?.['minlength']">
-      This  LastName is required and more than 3  !!
-    </div>
-    <br>
-    <label>age:</label>
-    <input type="number" name="age" ngModel #age="ngModel" required>
-    <div class="alert alert-danger" role="alert" *ngIf="age.errors?.['required'] && age.touched">
-        This  age is required !!
-      </div>
-    <br>
-    <button type="submit" [disabled]="f.invalid">Add</button>
+<form  [formGroup]="myForm" (ngSubmit)="print()" >
+  <label>firstname:</label>
+  <input type="text" formControlName="firstname">
+  <div class="alert alert-danger" *ngIf="myForm.get('firstname').touched && myForm.get('firstname').hasError('required')" >
+    This firstname is required
+  </div>
+  <div class="alert alert-danger" *ngIf="myForm.get('firstname').hasError('minlength') || myForm.get('firstname').hasError('maxlength') " >
+    This firstname between 3 and 10
+  </div>
+ 
+  
+  <br>
+  
+  <label>lastname:</label>
+   
+  <input type="text" name="lastname" formControlName="lastname"  required>
+  <div class="alert alert-danger" *ngIf="myForm.get('lastname').touched && myForm.get('lastname').hasError('required')" >
+    This lastname is required
+  </div>
+  <br>
+  <label>age:</label>
+  <input type="number" name="age"   formControlName="age" required>
+  <div class="alert alert-danger" *ngIf="myForm.get('age').touched && myForm.get('age').hasError('required')" >
+    This age is required
+  </div>
+  <br>
+  <label>email:</label>
+
+  <input type="email" name="email"   formControlName="email" required>
+  <div class="alert alert-danger" *ngIf="myForm.get('email').touched && myForm.get('email').hasError('required')" >
+    This email required
+  </div>
+  <div class="alert alert-danger" *ngIf="myForm.get('email').hasError('email')" >
+    This is not an email
+  </div>
+<br>
+<br>
+
+  <button type="submit" [disabled]="myForm.invalid">print</button>
 
 </form>
