@@ -1,4 +1,4 @@
-import { Component, Input, input, OnDestroy, OnInit } from '@angular/core'; // Import necessary Angular core modules
+import { Component, EventEmitter, Input, input, OnDestroy, OnInit, Output, output } from '@angular/core'; // Import necessary Angular core modules
 import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms'; // Import necessary form modules for reactive forms
 import { Router } from '@angular/router'; // Import Router for navigation
 import { ShareServiceService } from '../services/share-service.service'; // Import service for shared data or logic
@@ -17,6 +17,7 @@ import { title } from 'process'; // Import title (though it's not used in this c
   templateUrl: './home.component.html', // The HTML template for this component
   styleUrls: ['./home.component.css'] // The CSS file for this component
 })
+
 export class HomeComponent implements OnInit, OnDestroy { // Define HomeComponent class implementing OnInit and OnDestroy interfaces
   
   myForm: any; // Declare the form group for the component
@@ -26,6 +27,10 @@ export class HomeComponent implements OnInit, OnDestroy { // Define HomeComponen
   @Input('name') myName:any
   @Input("note") note:any
   @Input('myprofile') pr:any
+
+  @Output() myevent=new EventEmitter
+  browser='google'
+
   constructor(private fb: FormBuilder, private share: ShareServiceService) { // Constructor injects FormBuilder and ShareServiceService
     this.ob = this.share.testObservable().subscribe((val => { // Subscribe to the observable returned by ShareService
       console.log("subscribed"); // Log message when subscribed
@@ -102,4 +107,7 @@ export class HomeComponent implements OnInit, OnDestroy { // Define HomeComponen
     console.log('destroy'); // Log message when component is destroyed
     this.ob.unsubscribe(); // Unsubscribe from the observable to prevent memory leaks
   }
+  
+
+
 }

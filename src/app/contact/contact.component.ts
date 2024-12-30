@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-contact',
@@ -8,5 +8,16 @@ import { Component } from '@angular/core';
   styleUrl: './contact.component.css'
 })
 export class ContactComponent {
+  @Output() myevent=new EventEmitter
 
+  details={
+    pos:"",
+    browser:""
+  }
+  myprint(pos:any){
+    this.details.pos=pos
+    this.details.browser="chrome"
+    this.myevent.emit(this.details)
+
+  }
 }
