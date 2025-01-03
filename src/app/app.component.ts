@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
-import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from "./footer/footer.component";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { HomeComponent } from "./home/home.component";
-import { ContactComponent } from "./contact/contact.component";
 import { AboutComponent } from "./about/about.component";
 import { HttpClientModule } from '@angular/common/http';
+import { LayoutsModule } from './layouts/layouts.module';
 
 @Component({
   selector: 'app-root',
@@ -16,12 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
     RouterOutlet,
     HttpClientModule,
     RouterModule,
-    NavbarComponent,
-    FooterComponent,
     ReactiveFormsModule,
-    HomeComponent,
-    ContactComponent,
-    AboutComponent
+    LayoutsModule,
 ],
 
   templateUrl: './app.component.html',
