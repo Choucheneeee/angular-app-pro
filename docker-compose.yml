@@ -2,6 +2,11 @@ version: '3.8'
 
 services:
   angular-app:
-    build: .
+    image: angular-app
+    container_name: my-angular-app
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "80:80"
+    restart: unless-stopped

@@ -13,7 +13,14 @@ spec:
         app: angular-app
     spec:
       containers:
-      - name: angular-app
-        image: your-dockerhub-username/angular-app:latest
-        ports:
-        - containerPort: 80
+        - name: angular-app
+          image: chouchenee/angular-app:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
