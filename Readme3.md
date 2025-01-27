@@ -23,3 +23,5 @@ Let me know if you need further assistance! 😊
 
 
 minikube service angular-app-service --url
+
+ 
